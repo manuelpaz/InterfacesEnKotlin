@@ -1,20 +1,8 @@
 package Interfaces
 
-//Este codigo es se camboiara para ver la implementación de interface delegation, composition
-
-abstract class AquariumFish {
-    abstract val color: String
-}
-
-class Shark: AquariumFish(), FishAction{
-    override val color = "grey"
-
-    override fun eat() {
-        println("hunt and eat fish")
-    }
-}
-
-class Plecostomus: AquariumFish(), FishAction{
+//Actualizamos Plecostomus para que implemente FishAction y FishColor y podemos remover la herencia de AquariumFish ya que se tiene
+//toda la funcionalidad provenientes de las interfaces. Ni siquiera se necesita cambiar el cuerpo de Plecostomus
+class Plecostomus: FishAction, FishColor{
     override val color = "gold"
 
     override fun eat() {
@@ -22,12 +10,15 @@ class Plecostomus: AquariumFish(), FishAction{
     }
 }
 
+//Empezamos por separar AquariumFish en interfaces FishAction y FishColor
+
 interface FishAction{
     fun eat()
 }
+interface FishColor{
+    val color: String
+}
 
-//Definimos una nueva función main para explorar lo que es composition e implementamos delegado (delegate) para crear un Plecostomus
-//e imprimir su color y lo que come
 fun main(args: Array<String>){
     delegate()
 }
