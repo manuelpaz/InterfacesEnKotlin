@@ -1,7 +1,5 @@
 package Interfaces
 
-//Actualizamos Plecostomus para que implemente FishAction y FishColor y podemos remover la herencia de AquariumFish ya que se tiene
-//toda la funcionalidad provenientes de las interfaces. Ni siquiera se necesita cambiar el cuerpo de Plecostomus
 class Plecostomus: FishAction, FishColor{
     override val color = "gold"
 
@@ -10,7 +8,7 @@ class Plecostomus: FishAction, FishColor{
     }
 }
 
-//Empezamos por separar AquariumFish en interfaces FishAction y FishColor
+
 
 interface FishAction{
     fun eat()
@@ -27,3 +25,13 @@ fun delegate(){
     println("Fish has color ${pleco.color}")
     pleco.eat()
 }
+
+//Lo siguiente es usar interface delegation para proveer una implementación de color para hacer eso, necesitamos un objeto que sepa
+//como proveer un color al pez. Kotlin no permite declarar una clase donde podemos solamente tener una instancia a través del uso de
+//la palabra clave object en vez de class. Esto declarará una clase y hará exactamente una instancia de está.
+
+object GoldColor: FishColor{
+    override val color = "gold"
+}
+//La instancia será llamada GoldColor y no hay manera de hacer otra instancia de ésta clase pero eso está bien, porque no la necesitamos
+//Si se está familiarizado con el modelo Singleton así es como lo implementa Kotlin
