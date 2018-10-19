@@ -1,0 +1,2 @@
+La interface delegation es muy poderosa y generalmente se debería considerar como usarlo cada vez que use una clase abstracta en otro lneguaje esto
+permite usar composition para interconectar comportamientos en vez de requerir muchas subclases cada una especializada en maneras diferentes
