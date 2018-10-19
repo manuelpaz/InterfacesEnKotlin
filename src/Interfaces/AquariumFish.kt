@@ -1,8 +1,7 @@
 package Interfaces
-//Se tiene tdo para usar interface delegation regresemos a Plecostomus y ponemos by GoldColor al lado de FishColor y se remueve la variable miembro
-//Esto significa la implementación de la interface FishColor refiriendo todas las llamadas a el objeto GoldColor por lo tanto cada vez que se llame
-//a la propiedad color en esta clase se estará llamando a la propiedad color en GoldColor
-class Plecostomus: FishAction, FishColor by GoldColor{
+//Por supuesto que hay diferentes colores de Plecostomi (pez gatos) en el mundo así que podemos hacer el objeto FishColor un parametro de constructor
+//con un valor por defecto igual a GoldColor y refernciar las llamamadas a la propiedad color o cualquier FishColor que le pasemos **
+class Plecostomus(fishColor: FishColor = GoldColor): FishAction, FishColor by GoldColor{
    override fun eat() {
         println("munch on algae")
     }
@@ -29,3 +28,7 @@ object GoldColor: FishColor{
 }
 
 
+// ** Por ejemplo si pasaramos un color rojo entonces el FishColor sería by RedColor y retorna red
+object RedColor: FishColor{
+    override val color = "red"
+}
